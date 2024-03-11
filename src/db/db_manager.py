@@ -416,6 +416,7 @@ class DBManager:
                 amount=-amount,  # negate, withdrawals need to be negative in log data
                 balance=updated_from_moneybox.balance,  # type: ignore
                 session=session,
+                counterparty_moneybox_id=to_moneybox_id,
             )
 
             # log in `to_moneybox`instance (deposit)
@@ -429,6 +430,7 @@ class DBManager:
                 amount=amount,
                 balance=updated_to_moneybox.balance,  # type: ignore
                 session=session,
+                counterparty_moneybox_id=from_moneybox_id,
             )
 
     async def _add_transfer_log(  # pylint: disable=too-many-arguments
